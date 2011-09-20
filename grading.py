@@ -123,7 +123,7 @@ class Grading:
         self.stdscr.move(*yx)
 
     def record_grade(self, grades):
-        if self.selected_index and \
+        if self.selected_index != -1 and \
                 self.selected_index < len(self.namelist):
             self.records.append([self.selected_index] + grades)
             # Remove current index from the remaining search list to gurantee
@@ -321,7 +321,7 @@ class Grading:
                 'GRADE:  ')
 
     def search_name(self, buffer):
-        regexs = [re.compile(component.upper()) 
+        regexs = [re.compile('(^|\s)%s' % component.upper()) 
                 for component in ''.join(buffer).split(' ')]
 
         matched_indices = [idx for idx in self.remain_indices
