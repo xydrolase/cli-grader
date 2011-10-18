@@ -371,7 +371,7 @@ class Grading:
             if l_score == l_max and score < max:
                 return 1
             if l_score < l_max and \
-                    int(str(score)[:-2]) <= int(str(max)[:l_score]):
+                    int(str(score)[:-2])*10 <= max:
                 return 0
 
             return 1
@@ -381,8 +381,9 @@ class Grading:
                 return -1
             if l_score == l_max and score < max:
                 return 1
+
             if l_score < l_max and \
-                    int(str(score)) <= int(str(max)[:l_score]):
+                    int(str(score)) * 10 <= max:
                 # check if the k-prefix is valid
                 return 0
 
